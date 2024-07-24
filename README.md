@@ -1,3 +1,3 @@
 ## Food Mini Dataset
 
-# The food data-set and build in image converter. 
+This repository contains a food mini dataset and a tool to convert images for various machine learning applications.
