@@ -1,19 +1,34 @@
 import os
 from PIL import Image
 
+# idiot proofing
+FORMAT_MAPPING = {
+    'jpg': 'JPEG',
+    'jpeg': 'JPEG',
+    'png': 'PNG',
+}
+
 def convert_images(folder_path, current_format, destination_format):
     """Converts images from current_format to destination_format in the specified folder."""
     current_format = current_format.lower()
     destination_format = destination_format.lower()
+
+    if current_format not in FORMAT_MAPPING or destination_format not in FORMAT_MAPPING:
+        print(f"Unsupported format: {current_format} or {destination_format}")
+        return
     
     for filename in os.listdir(folder_path):
         if filename.lower().endswith(f'.{current_format}'):
             old_file = os.path.join(folder_path, filename)
             with Image.open(old_file) as img:
+                # Convert image mode if necessary
+                if img.mode != 'RGB' and FORMAT_MAPPING[destination_format] == 'JPEG':
+                    img = img.convert('RGB')
+                
                 new_file = os.path.join(folder_path, os.path.splitext(filename)[0] + f'.{destination_format}')
-                img.save(new_file, destination_format.upper())
+                img.save(new_file, FORMAT_MAPPING[destination_format])
                 print(f'Converted: {old_file} to {new_file}')
-            # Optional: Remove the old file after conversion
+            # Optional : if you chose to replace the original file with the converted one:) but I recommend to keep the original file xD
             # os.remove(old_file)
 
 def remove_files(folder_path, *file_formats):
