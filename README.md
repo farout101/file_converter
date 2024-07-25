@@ -1,6 +1,6 @@
-## Food Mini Dataset
+## File format Converter
 
-This repository contains a food mini dataset and a tool to convert images for various machine learning applications.
+This repository is used as an aid program for the AI Hackathon project
 
 1. Install Pillow
 ```sh
