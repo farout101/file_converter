@@ -11,3 +11,7 @@ pip install pillow
 ```sh
 python image_manager.py
 ```
+3. To breakdown large folder to smaller folders 
+```sh
+python fldb.py
+```
