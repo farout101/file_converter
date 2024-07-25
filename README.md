@@ -6,3 +6,8 @@ This repository is used as an aid program for the AI Hackathon project
 ```sh
 pip install pillow
 ```
+
+2. Run the Script
+```sh
+python image_manager.py
+```
